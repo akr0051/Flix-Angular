@@ -19,7 +19,7 @@ export class UserRegistrationService {
     );
   }
 
-  login(): Observable<any> {
+  userLogin(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.post(apiUrl + 'login', {headers: new HttpHeaders(
       {
@@ -146,7 +146,7 @@ export class UserRegistrationService {
     );
   }
 
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: Object): any {
     const body = res;
     return body || { };
   }
