@@ -9,6 +9,9 @@ const apiUrl = 'https://myflixapp0051.herokuapp.com/';
   providedIn: 'root'
 })
 export class UserRegistrationService {
+  EditUserInfo(userData: { Username: string; Password: string; Email: string; Birthday: string; }) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient) {
   }
 
@@ -19,15 +22,10 @@ export class UserRegistrationService {
     );
   }
 
-  userLogin(): Observable<any> {
-    const token = localStorage.getItem('token');
-    return this.http.post(apiUrl + 'login', {headers: new HttpHeaders(
-      {
-        Authorization: 'Bearer ' + token,
-      })}).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
-    );
+  public userLogin(userDetails: any): Observable<any> {
+    return this.http
+      .post(apiUrl + 'login', userDetails)
+      .pipe(catchError(this.handleError));
   }
  
   getAllMovies(): Observable<any> {
@@ -63,7 +61,7 @@ export class UserRegistrationService {
     );
   }
 
-  getGenre(): Observable<any> {
+  getGenre(Genre: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'genres/:Name', {headers: new HttpHeaders(
       {
@@ -74,10 +72,9 @@ export class UserRegistrationService {
     );
   }
 
-  getUser(): Observable<any> {
+  getUser(user: any): Observable<any> {
     const token = localStorage.getItem('token');
-    const user = localStorage.getUser('token');
-    return this.http.get(apiUrl + 'users', {headers: new HttpHeaders(
+    return this.http.get(apiUrl + 'users/:Username', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
