@@ -1,7 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+
+//API Call 
 import { UserRegistrationService } from '../fetch-api-data.service';
+
+// Angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-registration-form',
@@ -12,6 +16,12 @@ export class UserRegistrationFormComponent implements OnInit {
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
+ /**
+   *
+   * @param fetchApiData
+   * @param dialogRef
+   * @param snackBar
+   */
 constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
@@ -20,6 +30,7 @@ constructor(
 ngOnInit(): void {
 }
 
+// This is the function responsible for sending the form inputs to the backend
 registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       localStorage.setItem('username', response.user.username);

@@ -1,8 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
+// API call
 import { UserRegistrationService } from '../fetch-api-data.service';
+
+// Angular material
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-login-form',
@@ -13,6 +18,14 @@ export class UserLoginFormComponent implements OnInit {
   
     @Input() userData = { Username: '', Password: '' };
 
+
+  /**
+   *
+   * @param fetchApiData
+   * @param dialogRef
+   * @param snackBar
+   * @param router
+   */
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -22,6 +35,9 @@ export class UserLoginFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
+   /**
+   * login user
+   */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe(
       (response) => {

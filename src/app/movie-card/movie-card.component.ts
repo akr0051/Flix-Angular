@@ -66,11 +66,13 @@ export class MovieCardComponent implements OnInit {
    *
    * @param name
    * @param bio
+   * @param birth
+   * @param death
    * Opens modal with movie director information
    */
-   openDirectorDialog(name: string, bio: string): void {
+   openDirectorDialog(name: string, bio: string, birth: string, death: string): void {
     this.dialog.open(MovieDirectorComponent, {
-      data: { name, bio },
+      data: { name, bio, birth, death },
     });
   }
 
@@ -101,10 +103,9 @@ export class MovieCardComponent implements OnInit {
    * @returns 
    */
   isFavorite(movieID: string): boolean {
-    console.log("Movie ID " + movieID + "favorite check");
     return this.favoriteMovieIds.includes(movieID);
   };
- 
+
   /**
    * Adds or removes movie from user's list of favorites
    * @param id
@@ -128,5 +129,4 @@ export class MovieCardComponent implements OnInit {
     }
     return this.favoriteMovieIds.push(id);
   }
-
 }

@@ -1,7 +1,10 @@
 import { Component, OnInit,Input } from '@angular/core';
+
+// Angular material
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+// API Call
 import { UserRegistrationService } from '../fetch-api-data.service'
 @Component({
   selector: 'app-profile-update',
@@ -16,12 +19,21 @@ export class ProfileUpdateComponent implements OnInit {
   movies: any = [];
   favorites: any = [];
 
-  constructor(public fetchApiData:UserRegistrationService,    public dialogRef: MatDialogRef<ProfileUpdateComponent>,
+  /**
+   *
+   * @param fetchApiData
+   * @param dialogRef
+   * @param snackBar
+   */
+  constructor(
+    public fetchApiData:UserRegistrationService,    
+    public dialogRef: MatDialogRef<ProfileUpdateComponent>,
     public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
+  // edit user info
   editUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((resp) => {
       this.dialogRef.close();
