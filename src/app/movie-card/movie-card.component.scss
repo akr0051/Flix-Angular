@@ -33,11 +33,12 @@ img {
 }
   
 .movie-card-actions-container {
-      display: flex;
+      display: inline-block;
       justify-content: center;
       align-items: center;
+}   
   
-button {
+.button-card {
     font-size: 11px;
-    }
+    text-align: center;
 }

@@ -103,7 +103,7 @@ export class UserRegistrationService {
     );
   }
 
-    /**
+  /**
    * Calls API to get user account information
    * @param user
    * @returns
@@ -153,7 +153,7 @@ export class UserRegistrationService {
     );
   }
 
-    /**
+  /**
    * API call to edit user account details
    * @param userDetails
    * @returns
@@ -170,7 +170,7 @@ export class UserRegistrationService {
     );
   }
 
-    /**
+  /**
    * API call to remove user account
    * @returns
    */
@@ -186,7 +186,7 @@ export class UserRegistrationService {
     );
   }
 
-    /**
+  /**
    * API call to remove movie from user's list of favorites
    * @param id
    * @returns

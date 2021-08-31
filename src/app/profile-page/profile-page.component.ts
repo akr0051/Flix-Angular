@@ -20,7 +20,7 @@ import { ProfileDeleteComponent } from '../profile-delete/profile-delete.compone
 export class ProfilePageComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
-  user: any = {};
+  user: any = [];
   movies: any = [];
   favorites: any = [];
 
@@ -62,6 +62,7 @@ export class ProfilePageComponent implements OnInit {
    */
   getUser(): void {
     const user = localStorage.getItem('user');
+    console.log (user, "user")
     this.fetchApiData.getUser(user).subscribe((res: any) => {
       this.user = res;
       this.getMovies();
