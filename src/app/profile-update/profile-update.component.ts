@@ -14,11 +14,7 @@ import { UserRegistrationService } from '../fetch-api-data.service'
 
 export class ProfileUpdateComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
-
-  user: any = {};
-  movies: any = [];
-  favorites: any = [];
-
+  
   /**
    *
    * @param fetchApiData
