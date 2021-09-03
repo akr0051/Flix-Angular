@@ -3,7 +3,7 @@
   <!-- Update Profile -->
   <section>
     <mat-card class="update-container">
-      <mat-card-header class="update-header">
+      <mat-card-header class="update-header" *ngIf="user">
           Hello {{ user.Username }}
         <mat-card-title>Update Profile</mat-card-title>
       </mat-card-header>
@@ -31,3 +31,27 @@
       </mat-card-actions>
     </mat-card>
   </section>
+
+   <!-- Favorites -->
+   <section>
+    <h2>Favorite Movies</h2>
+    <div class="favorite-movies-container">
+      <mat-card class="favoriteMovie-card-container" *ngFor='let favorite of favorites'>
+        <mat-card-header class="favoriteMovie-card-header">
+          <mat-card-title class="favoriteMovie-card-title">{{favorite.Title}}</mat-card-title>
+          <mat-card-subtitle>Directed by: {{favorite.Director.Name}}</mat-card-subtitle>
+        </mat-card-header>
+        <img src={{favorite.ImagePath}} alt={{favorite.Title}} />
+        <mat-card-actions class="favoriteMovie-card-actions-container">
+          <button
+            mat-button
+            color='basic'
+            (click)='removeFavorites(favorite._id, favorite.Title)'            
+          >
+            Remove Favorite
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>    
+  </section>  
+</div>

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
 
 // API Call
 import { UserRegistrationService } from '../fetch-api-data.service';
@@ -20,7 +19,7 @@ import { ProfileDeleteComponent } from '../profile-delete/profile-delete.compone
 export class ProfilePageComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
-  user: any = {};
+  user: any = [];
   movies: any = [];
   favorites: any = [];
 
@@ -60,12 +59,23 @@ export class ProfilePageComponent implements OnInit {
    * get user data
    */
   getUser(): void {
-    const user = localStorage.getItem('user');
-    this.fetchApiData.getUser(user).subscribe((res: any) => {
-      console.log("->", res)
-      this.user = res;
-      this.getMovies();
-    });
+    const username: any = localStorage.getItem('username');
+    console.log("user", username)
+      this.fetchApiData.getUser(username).subscribe((res: any) => {
+        console.log("->", res)
+        this.user = res;
+        this.userData = this.user;
+        this.getMovies();
+      });
+  }
+
+  isUser(): boolean {
+    const username = localStorage.getItem('username');
+    if(username === "null"){
+      return false;
+    } else {
+      return true;
+    }
   }
 
   /**
