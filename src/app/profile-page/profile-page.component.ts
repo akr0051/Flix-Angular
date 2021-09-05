@@ -70,7 +70,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   isUser(): boolean {
-    const username = localStorage.getItem('username');
+    const username = localStorage.getItem('Username');
     if(username === "null"){
       return false;
     } else {

@@ -91,7 +91,7 @@ export class MovieCardComponent implements OnInit {
   * check if movie is in favorites
   **/ 
   getFavoriteMovies(): void {
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem('username');
     this.fetchApiData.getUser(user).subscribe((resp: any) => {
       this.favoriteMovieIds = resp.FavoriteMovies;
     });
